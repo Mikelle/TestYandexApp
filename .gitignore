@@ -20,11 +20,11 @@ local.properties
 .project
 
 # Android Studio
-.idea/
-.gradle
-/*/local.properties
+.idea
+.gradle/
+local.properties
 /*/out
-/*/*/build
+build/
 /*/*/production
 *.iml
 *.iws
