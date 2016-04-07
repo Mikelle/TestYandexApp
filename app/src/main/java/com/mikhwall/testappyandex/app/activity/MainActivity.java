@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager aLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(aLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new ArtistAdapter(artistsList);
+        adapter = new ArtistAdapter(MainActivity.this, artistsList);
 
         new ParseTask().execute();
     }
