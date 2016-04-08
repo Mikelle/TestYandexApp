@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.mikhwall.testappyandex.app.DividerItemDecoration;
 import com.mikhwall.testappyandex.app.R;
 import com.mikhwall.testappyandex.app.adapter.ArtistAdapter;
 import com.mikhwall.testappyandex.app.model.Artist;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager aLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(aLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this));
         adapter = new ArtistAdapter(MainActivity.this, artistsList);
 
         new ParseTask().execute();

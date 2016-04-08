@@ -52,7 +52,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
 
         Artist artist = artistList.get(position);
         String info = ArtistHelper.buildArtistAlbumsInfo(artist, context) +
-                " " + ArtistHelper.buildArtistTracksInfo(artist, context);
+                ", " + ArtistHelper.buildArtistTracksInfo(artist, context);
         holder.info.setText(info);
         holder.name.setText(artist.getName());
         holder.genres.setText(artist.getGenres());
