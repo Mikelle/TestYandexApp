@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     replace("\",\"",", "));
             artist.setTracks(obj.getInt(JSONobj.TAG_TRACKS));
             artist.setAlbums(obj.getInt(JSONobj.TAG_ALBUMS));
-            artist.setLink(obj.getString(JSONobj.TAG_LINK));
+            //artist.setLink(obj.getString(JSONobj.TAG_LINK));
             artist.setDescription(obj.getString(JSONobj.TAG_DESCRIPTION));
             artist.setCover_small(obj.getJSONObject(JSONobj.TAG_COVER).getString(JSONobj.TAG_COVER_SMALL));
             artist.setCover_big(obj.getJSONObject(JSONobj.TAG_COVER).getString(JSONobj.TAG_COVER_BIG));

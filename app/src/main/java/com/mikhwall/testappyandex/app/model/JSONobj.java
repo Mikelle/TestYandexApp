@@ -1,8 +1,5 @@
 package com.mikhwall.testappyandex.app.model;
 
-/**
- * Created by mikhwall on 03.04.16.
- */
 public final class JSONobj {
     public static final String TAG_ID = "id";
     public static final String TAG_NAME = "name";

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestAppYandex</string>
+    <string name="albums_single">альбом</string>;
+    <string name="albums_several">альбома</string>;
+    <string name="albums_many">альбомов</string>;
+    <string name="tracks_single">песня</string>;
+    <string name="tracks_several">песни</string>;
+    <string name="tracks_many">песней</string>;
 </resources>

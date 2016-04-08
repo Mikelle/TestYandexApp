@@ -1,8 +1,6 @@
 package com.mikhwall.testappyandex.app.adapter;
 
-
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhwall.testappyandex.app.R;
+import com.mikhwall.testappyandex.app.helpers.ArtistHelper;
 import com.mikhwall.testappyandex.app.model.Artist;
 import com.squareup.picasso.Picasso;
 
@@ -28,13 +27,14 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView name, genres;
+        public TextView name, genres, info;
         public ImageView small_cover;
 
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.name);
             genres = (TextView) view.findViewById(R.id.genres);
+            info = (TextView) view.findViewById(R.id.info);
             small_cover = (ImageView) view.findViewById(R.id.small_cover);
         }
     }
@@ -49,9 +49,14 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
         Artist artist = artistList.get(position);
+        String info = ArtistHelper.buildArtistAlbumsInfo(artist, context) +
+                " " + ArtistHelper.buildArtistTracksInfo(artist, context);
+        holder.info.setText(info);
         holder.name.setText(artist.getName());
         holder.genres.setText(artist.getGenres());
+
         Picasso.with(context).load(artist.getCover_small())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
