@@ -1,6 +1,7 @@
 package com.mikhwall.testappyandex.app.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,11 +50,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
         adapter = new ArtistAdapter(MainActivity.this, artistsList);
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(),
+                recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Artist artist = artistsList.get(position);
-                Toast.makeText(getApplicationContext(), artist.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), artist.getName() + " is selected!",
+                        Toast.LENGTH_SHORT).show();
+                artistSelected(artist);
             }
 
             @Override
@@ -62,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
         new ParseTask().execute();
+    }
+
+    private void artistSelected(Artist artist) {
+        Intent detailIntent = new Intent(getApplicationContext(), ArtistDetailActivity.class);
+        startActivity(detailIntent);
     }
 
     private class ParseTask extends AsyncTask<Void, Void, Void> {
