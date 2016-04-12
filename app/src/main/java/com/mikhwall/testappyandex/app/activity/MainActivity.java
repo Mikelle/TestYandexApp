@@ -32,6 +32,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager aLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(aLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setItemAnimator(new SlideInUpAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
         adapter = new ArtistAdapter(MainActivity.this, artistsList);
 

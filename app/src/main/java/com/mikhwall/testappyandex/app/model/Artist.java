@@ -1,6 +1,9 @@
 package com.mikhwall.testappyandex.app.model;
 
-public class Artist {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Artist implements Parcelable {
     private long id;
     private String name;
     private String genres;
@@ -10,6 +13,48 @@ public class Artist {
     private String description;
     private String cover_small;
     private String cover_big;
+
+    protected Artist(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        genres = in.readString();
+        tracks = in.readInt();
+        albums = in.readInt();
+        link = in.readString();
+        description = in.readString();
+        cover_small = in.readString();
+        cover_big = in.readString();
+    }
+
+    public static final Creator<Artist> CREATOR = new Creator<Artist>() {
+        @Override
+        public Artist createFromParcel(Parcel in) {
+            return new Artist(in);
+        }
+
+        @Override
+        public Artist[] newArray(int size) {
+            return new Artist[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeString(genres);
+        dest.writeInt(tracks);
+        dest.writeInt(albums);
+        dest.writeString(link);
+        dest.writeString(description);
+        dest.writeString(cover_small);
+        dest.writeString(cover_big);
+    }
 
     public long getId() {
         return id;
@@ -82,4 +127,5 @@ public class Artist {
     public void setCover_big(String cover_big) {
         this.cover_big = cover_big;
     }
+
 }

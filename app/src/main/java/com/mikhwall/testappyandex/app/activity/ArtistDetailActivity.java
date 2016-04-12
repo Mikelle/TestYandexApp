@@ -9,8 +9,8 @@ import com.mikhwall.testappyandex.app.model.Artist;
 public class ArtistDetailActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedIntsanseState) {
-        super.onCreate(savedIntsanseState);
+    protected void onCreate(Bundle savedInstanseState) {
+        super.onCreate(savedInstanseState);
 
         Intent intent = getIntent();
     }
