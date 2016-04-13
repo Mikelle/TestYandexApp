@@ -16,7 +16,7 @@
         android:src="@drawable/placeholder" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/list_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/small_cover"
@@ -26,17 +26,17 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/genres"
+        android:id="@+id/list_genres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/list_name"
         android:layout_toRightOf="@+id/small_cover"
         android:text="genres"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp"/>
 
     <TextView
-        android:id="@+id/info"
+        android:id="@+id/list_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

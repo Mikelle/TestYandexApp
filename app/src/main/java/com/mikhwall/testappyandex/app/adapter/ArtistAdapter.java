@@ -32,9 +32,9 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
 
         public MyViewHolder(View view) {
             super(view);
-            name = (TextView) view.findViewById(R.id.name);
-            genres = (TextView) view.findViewById(R.id.genres);
-            info = (TextView) view.findViewById(R.id.info);
+            name = (TextView) view.findViewById(R.id.list_name);
+            genres = (TextView) view.findViewById(R.id.list_genres);
+            info = (TextView) view.findViewById(R.id.list_info);
             small_cover = (ImageView) view.findViewById(R.id.small_cover);
         }
     }
