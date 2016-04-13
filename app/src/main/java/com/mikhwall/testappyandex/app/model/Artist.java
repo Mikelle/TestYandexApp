@@ -38,6 +38,10 @@ public class Artist implements Parcelable {
         }
     };
 
+    public Artist() {
+
+    }
+
     @Override
     public int describeContents() {
         return 0;

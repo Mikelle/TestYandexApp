@@ -3,6 +3,7 @@ package com.mikhwall.testappyandex.app.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,7 +18,7 @@ import com.mikhwall.testappyandex.app.DividerItemDecoration;
 import com.mikhwall.testappyandex.app.R;
 import com.mikhwall.testappyandex.app.adapter.ArtistAdapter;
 import com.mikhwall.testappyandex.app.model.Artist;
-import com.mikhwall.testappyandex.app.model.JSONobj;
+import com.mikhwall.testappyandex.app.model.DataTransition;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void artistSelected(Artist artist) {
         Intent detailIntent = new Intent(getApplicationContext(), ArtistDetailActivity.class);
+        detailIntent.putExtra(DataTransition.ARTIST, artist);
         startActivity(detailIntent);
     }
 
@@ -130,18 +132,18 @@ public class MainActivity extends AppCompatActivity {
 
         public Artist parseJSON(JSONObject obj) throws JSONException {
             Artist artist = new Artist();
-            artist.setId(obj.getLong(JSONobj.TAG_ID));
-            artist.setName(obj.getString(JSONobj.TAG_NAME));
-            artist.setGenres(obj.getString(JSONobj.TAG_GENRES).
+            artist.setId(obj.getLong(DataTransition.JSONobj.TAG_ID));
+            artist.setName(obj.getString(DataTransition.JSONobj.TAG_NAME));
+            artist.setGenres(obj.getString(DataTransition.JSONobj.TAG_GENRES).
                     replace("[\"", "").
                     replace("\"]", "").
                     replace("\",\"",", "));
-            artist.setTracks(obj.getInt(JSONobj.TAG_TRACKS));
-            artist.setAlbums(obj.getInt(JSONobj.TAG_ALBUMS));
+            artist.setTracks(obj.getInt(DataTransition.JSONobj.TAG_TRACKS));
+            artist.setAlbums(obj.getInt(DataTransition.JSONobj.TAG_ALBUMS));
             //artist.setLink(obj.getString(JSONobj.TAG_LINK));
-            artist.setDescription(obj.getString(JSONobj.TAG_DESCRIPTION));
-            artist.setCover_small(obj.getJSONObject(JSONobj.TAG_COVER).getString(JSONobj.TAG_COVER_SMALL));
-            artist.setCover_big(obj.getJSONObject(JSONobj.TAG_COVER).getString(JSONobj.TAG_COVER_BIG));
+            artist.setDescription(obj.getString(DataTransition.JSONobj.TAG_DESCRIPTION));
+            artist.setCover_small(obj.getJSONObject(DataTransition.JSONobj.TAG_COVER).getString(DataTransition.JSONobj.TAG_COVER_SMALL));
+            artist.setCover_big(obj.getJSONObject(DataTransition.JSONobj.TAG_COVER).getString(DataTransition.JSONobj.TAG_COVER_BIG));
             return artist;
         }
     }
