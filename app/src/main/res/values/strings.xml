@@ -6,4 +6,5 @@
     <string name="tracks_single">песня</string>;
     <string name="tracks_several">песни</string>;
     <string name="tracks_many">песней</string>;
+    <string name="detail_biography_title">Биография</string>
 </resources>

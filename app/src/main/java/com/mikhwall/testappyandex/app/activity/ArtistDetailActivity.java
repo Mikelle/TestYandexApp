@@ -36,7 +36,10 @@ public class ArtistDetailActivity extends AppCompatActivity {
         String genres = artist.getGenres();
         String info = ArtistHelper.buildArtistAlbumsInfo(artist, this) + "  .  "
                 + ArtistHelper.buildArtistTracksInfo(artist, this);
-        String biography = artist.getDescription();
+        String biography = artist.getDescription().substring(0, 1).toUpperCase() +
+                artist.getDescription().substring(1);
+
+        assert biographyTextView != null && infoTextView != null && genresTextView != null;
 
         genresTextView.setText(genres);
         infoTextView.setText(info);

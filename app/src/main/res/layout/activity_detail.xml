@@ -38,12 +38,20 @@
                 android:textSize="@dimen/secondary_text_size"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_title_biography"
+                android:text="@string/detail_biography_title"
+                android:layout_marginBottom="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
                 android:id="@+id/detail_biography"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:gravity="fill"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/main_text_size"/>
 
         </LinearLayout>
