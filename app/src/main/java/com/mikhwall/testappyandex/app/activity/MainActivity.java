@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Parcelable;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -40,6 +41,22 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArtistAdapter adapter;
     private List<Artist> artistsList = new ArrayList<>();
+    private static Parcelable listState;
+    private RecyclerView.LayoutManager aLayoutManager;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        listState = aLayoutManager.onSaveInstanceState();
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (listState != null)
+            aLayoutManager.onRestoreInstanceState(listState);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        RecyclerView.LayoutManager aLayoutManager = new LinearLayoutManager(getApplicationContext());
+        aLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(aLayoutManager);
         recyclerView.setItemAnimator(new SlideInUpAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
