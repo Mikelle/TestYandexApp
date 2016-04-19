@@ -41,23 +41,25 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArtistAdapter adapter;
     private List<Artist> artistsList = new ArrayList<>();
-    private static Parcelable listState;
-    private RecyclerView.LayoutManager aLayoutManager;
+    private LinearLayoutManager aLayoutManager;
+    public static int index = -1;
+    public static int top = -1;
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        listState = aLayoutManager.onSaveInstanceState();
+    public void onPause() {
+        super.onPause();
+        index = aLayoutManager.findFirstVisibleItemPosition();
+        View v = recyclerView.getChildAt(0);
+        top = (v == null) ? 0 : (v.getTop() - recyclerView.getPaddingTop());
     }
 
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        if (listState != null)
-            aLayoutManager.onRestoreInstanceState(listState);
-        super.onRestoreInstanceState(savedInstanceState);
+    public void onResume(){
+        super.onResume();
+        if (index != -1) {
+            aLayoutManager.scrollToPositionWithOffset(index, top);
+        }
     }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
