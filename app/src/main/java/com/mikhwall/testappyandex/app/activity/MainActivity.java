@@ -3,8 +3,10 @@ package com.mikhwall.testappyandex.app.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.content.PermissionChecker;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private ArtistAdapter adapter;
     private List<Artist> artistsList = new ArrayList<>();
     private LinearLayoutManager aLayoutManager;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     public static int index = -1;
     public static int top = -1;
 
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             aLayoutManager.scrollToPositionWithOffset(index, top);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -72,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
         adapter = new ArtistAdapter(MainActivity.this, artistsList);
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getArtistRefresh();
+            }
+        });
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(),
                 recyclerView, new ClickListener() {
             @Override
@@ -89,7 +100,16 @@ public class MainActivity extends AppCompatActivity {
         }));
         new ParseTask().execute();
     }
-
+    private void getArtistRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter = new ArtistAdapter(MainActivity.this, artistsList);
+                recyclerView.setAdapter(adapter);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 400);
+    }
     private void artistSelected(Artist artist) {
         Intent detailIntent = new Intent(getApplicationContext(), ArtistDetailActivity.class);
         detailIntent.putExtra(DataTransition.ARTIST, artist);
@@ -159,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                     replace("\",\"",", "));
             artist.setTracks(obj.getInt(DataTransition.JSONobj.TAG_TRACKS));
             artist.setAlbums(obj.getInt(DataTransition.JSONobj.TAG_ALBUMS));
-            //artist.setLink(obj.getString(JSONobj.TAG_LINK));
             artist.setDescription(obj.getString(DataTransition.JSONobj.TAG_DESCRIPTION));
             artist.setCover_small(obj.getJSONObject(DataTransition.JSONobj.TAG_COVER).getString(DataTransition.JSONobj.TAG_COVER_SMALL));
             artist.setCover_big(obj.getJSONObject(DataTransition.JSONobj.TAG_COVER).getString(DataTransition.JSONobj.TAG_COVER_BIG));
