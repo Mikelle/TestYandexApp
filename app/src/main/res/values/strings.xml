@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">TestAppYandex</string>
+    <string name="app_name">YandexApp</string>
+    <string name="main_activity_title">Исполнители</string>
     <string name="albums_single">альбом</string>;
     <string name="albums_several">альбома</string>;
     <string name="albums_many">альбомов</string>;

@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.main_activity_title);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         aLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(aLayoutManager);
@@ -177,6 +178,9 @@ public class MainActivity extends AppCompatActivity {
                     replace("[\"", "").
                     replace("\"]", "").
                     replace("\",\"",", "));
+            if (obj.has(DataTransition.JSONobj.TAG_LINK)) {
+                artist.setLink(obj.getString(DataTransition.JSONobj.TAG_LINK));
+            }
             artist.setTracks(obj.getInt(DataTransition.JSONobj.TAG_TRACKS));
             artist.setAlbums(obj.getInt(DataTransition.JSONobj.TAG_ALBUMS));
             artist.setDescription(obj.getString(DataTransition.JSONobj.TAG_DESCRIPTION));
