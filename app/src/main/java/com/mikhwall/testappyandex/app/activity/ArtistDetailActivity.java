@@ -22,10 +22,10 @@ public class ArtistDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Artist artist = intent.getParcelableExtra(DataTransition.ARTIST);
 
-        makeGUI(artist);
+        setUpLayout(artist);
     }
 
-    private void makeGUI(Artist artist) {
+    private void setUpLayout(Artist artist) {
         setTitle(artist.getName());
 
         TextView genresTextView = (TextView) findViewById(R.id.detail_genres);
