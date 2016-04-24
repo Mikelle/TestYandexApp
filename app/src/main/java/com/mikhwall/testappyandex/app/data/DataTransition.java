@@ -1,4 +1,10 @@
-package com.mikhwall.testappyandex.app.model;
+package com.mikhwall.testappyandex.app.data;
+
+/**
+ * Class for storing tags and for data transition between activities.
+ *
+ * @author Mikhail Wall
+ */
 
 public class DataTransition {
 

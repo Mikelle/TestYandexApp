@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/list_name"
         android:layout_toRightOf="@+id/small_cover"
-        android:text="genres"
+        android:text="@string/genres"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp"/>
 

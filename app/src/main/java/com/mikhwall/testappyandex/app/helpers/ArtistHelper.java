@@ -3,10 +3,17 @@ package com.mikhwall.testappyandex.app.helpers;
 import android.content.Context;
 
 import com.mikhwall.testappyandex.app.R;
-import com.mikhwall.testappyandex.app.model.Artist;
+import com.mikhwall.testappyandex.app.data.Artist;
+
+/**
+ * Class for proper ending of russian words
+ *
+ * @author Mikhail Wall
+ */
 
 public class ArtistHelper {
 
+    // private method for getting proper word
     private static String getRightWord(int amount, String single, String several, String many) {
         int value = amount % 100;
 

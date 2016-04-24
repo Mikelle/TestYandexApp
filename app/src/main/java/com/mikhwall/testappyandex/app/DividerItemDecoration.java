@@ -7,6 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+/**
+ * Class for drawing divider between elements of artists list
+ *
+ * @author Mikhail Wall
+ */
+
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = new int[] {
@@ -26,6 +32,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         drawVertical(c, parent);
     }
 
+    // method for drawing on vertical orientation of activity
     public void drawVertical(Canvas c, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();

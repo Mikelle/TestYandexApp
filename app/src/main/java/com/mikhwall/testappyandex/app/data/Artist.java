@@ -1,7 +1,13 @@
-package com.mikhwall.testappyandex.app.model;
+package com.mikhwall.testappyandex.app.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+/**
+ * Class for storing data about artist from JSON.
+ *
+ * @author Mikhail Wall
+ */
 
 public class Artist implements Parcelable {
     private long id;
@@ -14,6 +20,7 @@ public class Artist implements Parcelable {
     private String cover_small;
     private String cover_big;
 
+    // Parcelable implementation
     protected Artist(Parcel in) {
         id = in.readLong();
         name = in.readString();
@@ -60,6 +67,7 @@ public class Artist implements Parcelable {
         dest.writeString(cover_big);
     }
 
+    // Getters and Setters
     public long getId() {
         return id;
     }

@@ -8,12 +8,19 @@ import android.widget.TextView;
 
 import com.mikhwall.testappyandex.app.R;
 import com.mikhwall.testappyandex.app.helpers.ArtistHelper;
-import com.mikhwall.testappyandex.app.model.Artist;
-import com.mikhwall.testappyandex.app.model.DataTransition;
+import com.mikhwall.testappyandex.app.data.Artist;
+import com.mikhwall.testappyandex.app.data.DataTransition;
 import com.squareup.picasso.Picasso;
+
+/**
+ * Activity for detail artist info viewing.
+ *
+ * @author Mikhail Wall
+ */
 
 public class ArtistDetailActivity extends AppCompatActivity {
 
+    // method for creating activity
     @Override
     protected void onCreate(Bundle savedInstanseState) {
         super.onCreate(savedInstanseState);
@@ -25,6 +32,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
         setUpLayout(artist);
     }
 
+    // method for setting up layout for artist
     private void setUpLayout(Artist artist) {
         setTitle(artist.getName());
 
@@ -34,7 +42,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
         ImageView imageImageView = (ImageView) findViewById(R.id.big_cover);
 
         String genres = artist.getGenres();
-        String info = ArtistHelper.buildArtistAlbumsInfo(artist, this) + "  .  "
+        String info = ArtistHelper.buildArtistAlbumsInfo(artist, this) + "  ·  "
                 + ArtistHelper.buildArtistTracksInfo(artist, this);
         String biography = artist.getDescription().substring(0, 1).toUpperCase() +
                 artist.getDescription().substring(1);

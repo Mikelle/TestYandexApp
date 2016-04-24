@@ -10,10 +10,16 @@ import android.widget.TextView;
 
 import com.mikhwall.testappyandex.app.R;
 import com.mikhwall.testappyandex.app.helpers.ArtistHelper;
-import com.mikhwall.testappyandex.app.model.Artist;
+import com.mikhwall.testappyandex.app.data.Artist;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+/**
+ * Adapter for artist.
+ *
+ * @author Mikhail Wall
+ */
 
 public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHolder> {
 
@@ -25,6 +31,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
         this.artistList = artistList;
     }
 
+    // View holder for element of artists list
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name, genres, info;
@@ -39,6 +46,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
         }
     }
 
+    // method for creating view holder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -47,6 +55,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
         return new MyViewHolder(itemView);
     }
 
+    // method for setting up artist info into view holder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
@@ -67,5 +76,4 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MyViewHold
     public int getItemCount() {
         return artistList.size();
     }
-
 }
